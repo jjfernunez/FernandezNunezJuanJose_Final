@@ -6,19 +6,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".VisualizarActivity">
+
     <TextView
         android:id="@+id/viewNombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hint_nombre"/>
+        android:text="@string/hint_nombre" />
 
     <EditText
         android:id="@+id/txtNombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:labelFor="@id/viewNombre"
         android:inputType="textPersonName"
+        android:labelFor="@id/viewNombre"
         android:textSize="24sp" />
 
     <Space
@@ -29,14 +30,15 @@
         android:id="@+id/viewDNI"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hint_dni"/>
+        android:text="@string/hint_dni" />
+
     <EditText
         android:id="@+id/txtDni"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:labelFor="@id/viewDNI"
         android:inputType="textPersonName"
+        android:labelFor="@id/viewDNI"
         android:textSize="24sp" />
 
     <Space
@@ -47,33 +49,36 @@
         android:id="@+id/viewFechaNac"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hint_fechaNac"/>
+        android:text="@string/hint_fechaNac" />
+
     <EditText
         android:id="@+id/txtFechaNac"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:labelFor="@id/viewFechaNac"
         android:inputType="textPersonName"
+        android:labelFor="@id/viewFechaNac"
         android:textSize="24sp" />
 
     <Space
         android:layout_width="match_parent"
         android:layout_height="59dp" />
+
     <TextView
         android:id="@+id/viewEdad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hint_edad"/>
+        android:text="@string/hint_edad" />
 
     <EditText
         android:id="@+id/txtEdad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:labelFor="@id/viewEdad"
         android:inputType="textPersonName"
+        android:labelFor="@id/viewEdad"
         android:textSize="24sp" />
+
     <Button
         android:id="@+id/btnGuarda"
         android:layout_width="match_parent"
@@ -87,4 +92,11 @@
         android:layout_gravity="bottom|end"
         android:clickable="true"
         app:srcCompat="@drawable/edit" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabEliminar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:srcCompat="@drawable/delete" />
 </LinearLayout>

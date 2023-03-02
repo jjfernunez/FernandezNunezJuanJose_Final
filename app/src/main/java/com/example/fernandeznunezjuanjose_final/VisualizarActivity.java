@@ -1,7 +1,9 @@
 package com.example.fernandeznunezjuanjose_final;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
@@ -17,7 +19,7 @@ public class VisualizarActivity extends AppCompatActivity {
 
     EditText txtNombre, txtDNI, txtFechaNac, txtEdad;
     Button btnGuarda;
-    FloatingActionButton fabEditar;
+    FloatingActionButton fabEditar, fabEliminar;
     Clientes cliente;
     int id = 0;
     @Override
@@ -31,6 +33,7 @@ public class VisualizarActivity extends AppCompatActivity {
         txtEdad = findViewById(R.id.txtEdad);
         btnGuarda = findViewById(R.id.btnGuarda);
         fabEditar = findViewById(R.id.fabEditar);
+        fabEliminar = findViewById(R.id.fabEliminar);
         if(savedInstanceState == null){
             Bundle extras = getIntent().getExtras();
             if(extras == null)
@@ -66,5 +69,33 @@ public class VisualizarActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        fabEliminar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(VisualizarActivity.this);
+                builder.setMessage("¿Quieres eliminar este cliente?").setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if(bd.eliminarContacto(id)){
+                            lista();
+                        }
+
+
+                    }
+                })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        }).show();
+            }
+        });
+    }
+
+    private void lista(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

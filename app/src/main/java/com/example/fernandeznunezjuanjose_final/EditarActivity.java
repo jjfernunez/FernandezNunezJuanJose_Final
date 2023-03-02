@@ -12,11 +12,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.fernandeznunezjuanjose_final.BaseDatos.BDClientes;
 import com.example.fernandeznunezjuanjose_final.BaseDatos.Clientes;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class EditarActivity extends AppCompatActivity {
 
     EditText txtNombre, txtDNI, txtFechaNac, txtEdad;
     Button btnGuarda;
+    FloatingActionButton fabEditar, fabEliminar;
     boolean correcto = false;
     Clientes cliente;
     int id = 0;
@@ -30,6 +32,10 @@ public class EditarActivity extends AppCompatActivity {
         txtFechaNac = findViewById(R.id.txtFechaNac);
         txtEdad = findViewById(R.id.txtEdad);
         btnGuarda = findViewById(R.id.btnGuarda);
+        fabEditar = findViewById(R.id.fabEditar);
+        fabEliminar = findViewById(R.id.fabEliminar);
+        fabEditar.setVisibility(View.INVISIBLE);
+        fabEliminar.setVisibility(View.INVISIBLE);
         if(savedInstanceState == null){
             Bundle extras = getIntent().getExtras();
             if(extras == null)

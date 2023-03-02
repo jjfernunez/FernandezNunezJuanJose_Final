@@ -10,14 +10,14 @@ import android.widget.Toast;
 
 import com.example.fernandeznunezjuanjose_final.BaseDatos.BDClientes;
 
-public class MostrarDatos extends AppCompatActivity {
+public class CrearCliente extends AppCompatActivity {
 
     EditText txtNombre, txtDni, txtFechaNac, txtEdad;
     Button  btnGuarda;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mostrar_datos);
+        setContentView(R.layout.activity_crear_cliente);
 
         txtNombre = findViewById(R.id.txtNombre);
         txtDni = findViewById(R.id.txtDni);
@@ -26,15 +26,15 @@ public class MostrarDatos extends AppCompatActivity {
         btnGuarda.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BDClientes db = new BDClientes(MostrarDatos.this);
+                BDClientes db = new BDClientes(CrearCliente.this);
                long id = db.insertarCliente(txtNombre.getText().toString(), txtDni.getText().toString(), txtFechaNac.getText().toString());
 
                if(id > 0){
-                   Toast.makeText(MostrarDatos.this, "Cliente Guardado", Toast.LENGTH_LONG).show();
+                   Toast.makeText(CrearCliente.this, "Cliente Guardado", Toast.LENGTH_LONG).show();
                    vaciar();
                }
                else{
-                   Toast.makeText(MostrarDatos.this, "Error al guardar el cliente", Toast.LENGTH_LONG).show();
+                   Toast.makeText(CrearCliente.this, "Error al guardar el cliente", Toast.LENGTH_LONG).show();
                }
             }
         });

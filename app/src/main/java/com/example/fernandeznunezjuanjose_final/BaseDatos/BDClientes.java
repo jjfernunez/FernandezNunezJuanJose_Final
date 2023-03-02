@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
 
 import androidx.annotation.Nullable;
 
@@ -53,6 +54,7 @@ public class BDClientes extends GestionBD{
         if (cursorClientes.moveToFirst()) {
             do {
                 cliente = new Clientes();
+                cliente.setId(cursorClientes.getInt(0));
                 cliente.setNombre(cursorClientes.getString(1));
                 cliente.setDni(cursorClientes.getString(2));
                 cliente.setFechaNac(cursorClientes.getString(3));
@@ -80,6 +82,9 @@ public class BDClientes extends GestionBD{
             cliente.setNombre(cursorClientes.getString(1));
             cliente.setDni(cursorClientes.getString(2));
             cliente.setFechaNac(cursorClientes.getString(3));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                cliente.calcularEdad();
+            }
         }
 
         cursorClientes.close();
@@ -87,7 +92,7 @@ public class BDClientes extends GestionBD{
         return cliente;
     }
 
-    public boolean editarContacto(int id, String nombre, String telefono, String correo_electronico) {
+    public boolean editarContacto(int id, String nombre, String dni, String fechaNac) {
 
         boolean correcto = false;
 
@@ -95,7 +100,7 @@ public class BDClientes extends GestionBD{
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         try {
-            db.execSQL("UPDATE " + TABLE_CLIENTES + " SET nombre = '" + nombre + "', telefono = '" + telefono + "', correo_electronico = '" + correo_electronico + "' WHERE id='" + id + "' ");
+            db.execSQL("UPDATE " + TABLE_CLIENTES + " SET nombre = '" + nombre + "', dni = '" + dni + "', fechaNac = '" + fechaNac + "' WHERE id='" + id + "' ");
             correcto = true;
         } catch (Exception ex) {
             ex.toString();

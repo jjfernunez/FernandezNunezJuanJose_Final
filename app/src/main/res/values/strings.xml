@@ -2,8 +2,8 @@
     <string name="app_name">FernandezNunezJuanJose_Final</string>
     <string name="hint_nombre">Nombre</string>
     <string name="hint_dni">DNI</string>
-    <string name="hint_fechaNac">Fecha de Nacimiento</string>
+    <string name="hint_fechaNac">Fecha de Nacimiento (YYYY-MM-DD)</string>
     <string name="hint_edad">Edad</string>
-    <string name="btnGuarda">GuardarDatos</string>
+    <string name="btnGuarda">Guardar Datos</string>
     <string name="menu_nuevo">Nuevo Cliente</string>
 </resources>

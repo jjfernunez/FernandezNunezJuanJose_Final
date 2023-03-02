@@ -11,7 +11,8 @@ public class Clientes {
     private String nombre;
     private String fechaNac;
     private String dni;
-    private int edad;
+    private int edad = 0;
+    private int id;
 
 
     public String getNombre() {
@@ -44,7 +45,7 @@ public class Clientes {
         LocalDate hoy = LocalDate.now();
         if ((hoy != null) && (fechanac != null))
         {
-            this.setEdad(Period.between(hoy, fechanac).getYears());
+            this.setEdad(Math.abs(Period.between(hoy, fechanac).getYears()));
         }
         else
         {
@@ -58,5 +59,13 @@ public class Clientes {
 
     public void setEdad(int edad) {
         this.edad = edad;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 }

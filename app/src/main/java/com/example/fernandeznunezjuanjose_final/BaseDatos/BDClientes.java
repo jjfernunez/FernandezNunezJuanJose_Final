@@ -18,7 +18,7 @@ public class BDClientes extends GestionBD{
         this.context = context;
     }
 
-    public long insertarCliente(String nombre, String telefono, String correo_electronico) {
+    public long insertarCliente(String nombre, String dni, String fechaNac) {
 
         long id = 0;
 
@@ -28,8 +28,8 @@ public class BDClientes extends GestionBD{
 
             ContentValues values = new ContentValues();
             values.put("nombre", nombre);
-            values.put("telefono", telefono);
-            values.put("correo_electronico", correo_electronico);
+            values.put("dni", dni);
+            values.put("fechaNac", fechaNac);
 
             id = db.insert(TABLE_CLIENTES, null, values);
         } catch (Exception ex) {

@@ -1,9 +1,17 @@
 package com.example.fernandeznunezjuanjose_final.BaseDatos;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
+import java.time.LocalDate;
+import java.time.Period;
+
 public class Clientes {
     private String nombre;
     private String fechaNac;
     private String dni;
+    private int edad;
 
 
     public String getNombre() {
@@ -28,5 +36,27 @@ public class Clientes {
 
     public void setDni(String dni) {
         this.dni = dni;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void calcularEdad(){
+        LocalDate fechanac = LocalDate.parse(this.fechaNac);
+        LocalDate hoy = LocalDate.now();
+        if ((hoy != null) && (fechanac != null))
+        {
+            this.setEdad(Period.between(hoy, fechanac).getYears());
+        }
+        else
+        {
+            this.setEdad(0);
+        }
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
     }
 }
